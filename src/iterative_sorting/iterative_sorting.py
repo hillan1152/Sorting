@@ -6,65 +6,42 @@ def selection_sort(arr):
         smallest_index = cur_index
         # TO-DO: find next smallest element
         # (hint, can do in 3 loc)
+
+        # progress through array looking for smaller number
         for j in range(cur_index, len(arr)):
-            if arr[j] < arr[smallest_index]:
+            if arr[smallest_index] > arr[j]:
                 smallest_index = j
         # TO-DO: swap
         arr[cur_index], arr[smallest_index] = arr[smallest_index], arr[cur_index]
+
     return arr
 
 
 # TO-DO:  implement the Bubble Sort function below
 
+# UNDERSTAND
+    # Compare consecutive items
+    # The highest number will bubble all the way to the right with each iteration
 
-# def bubble_sort(arr):
-#     swap = False
-#     if swap == True:
-#         arr[cur_index], arr[next_index] = arr[next_index], arr[cur_index]
-#     for i in range(0, len(arr)-1):
-#         cur_index = i
-#         next_index = cur_index
-#         # Create loop throughout next number to compare
-#         for j in range(cur_index, len(arr)):
-#             if arr[j] > arr[next_index]:
-#                 next_index = j
-#                 arr[cur_index], arr[next_index] = arr[next_index], arr[cur_index]
-#         # if curr index is greater than next index, swap
-#         # then add 1 to current index
-
-#         # else if it's not, add 1 to current index and continue to next step
-#     return arr
 
 def bubble_sort(arr):
-    swap = True
-    while swap:
-        swap = False
-        for i in range(0, len(arr) - 1):
-            if arr[i] > arr[i + 1]:
-                arr[i], arr[i + 1] = arr[i + 1], arr[i]
-                swap = True
+    # PLAN
+    #  create first iteration that takes in the first index
+    for i in range(1, len(arr)):
+        #  make another iteration that is always at the prev number
+        for j in range(0, len(arr) - 1):
+            #  if 2nd number is greater than the first, swap
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                # i += 1
     return arr
+
+
+a = [8, 2, 5, 1]
+bubble_sort(a)
+
+
 # STRETCH: implement the Count Sort function below
-
-# THIS DOESN'T WORK
-
-
 def count_sort(arr, maximum=-1):
-    # count number of times each value appears
-    counts = [0] * (maximum + 1)
-    for num in arr:
-        counts[num] += 1
-
-    # overwrite coutns to hold next index an item to store where the next number goes
-    previous = 0
-    for i, count in enumerate(counts):
-        counts[i] = previous
-        previous += count
-
-    sorted_list = [None] * len(arr)
-
-    for item in arr:
-        sorted_list[counts[item]] = item
-        counts[item] += 1
 
     return arr
